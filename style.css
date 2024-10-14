@@ -1,0 +1,57 @@
+body {
+  background-color: hsl(210, 40%, 10%);
+  margin: 0;
+}
+
+.container {
+  width: 40vw;
+  height: 40vw;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  background-color: #ddd;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 40px;
+  gap: 80px;
+}
+
+.btns>button {
+  padding: 10px 15px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.btns>.reset {
+  background-color: hsl(120, 50%, 50%);
+}
+
+.btns>.reset:hover {
+  background-color: hsl(120, 60%, 40%);
+}
+
+.btns>.change {
+  background-color: hsl(40, 50%, 50%);
+}
+
+.btns>.change:hover {
+  background-color: hsl(40, 60%, 40%);
+}
+
+.gridCol {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.gridRow {
+  flex: auto;
+}
