@@ -27,11 +27,11 @@ function makeGrid(size, hoverColor) {
 		grid.appendChild(gridCol);
 	}
 	document.body.appendChild(grid);
-
-	resetButton.addEventListener("click", () => {
-		const pixels = document.querySelectorAll(".gridRow");
-		pixels.forEach((pixel) => (pixel.style.backgroundColor = gridColor));
-	});
 }
+
+resetButton.addEventListener("click", () => {
+	const pixels = document.querySelectorAll(".gridRow");
+	pixels.forEach((pixel) => (pixel.style.backgroundColor = gridColor));
+});
 
 makeGrid(gridSize, hoverColor);
