@@ -13,6 +13,17 @@ body {
   background-color: #ddd;
 }
 
+.gridCol {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.gridRow {
+  flex: 1;
+}
+
 .btns {
   display: flex;
   justify-content: center;
@@ -38,20 +49,18 @@ body {
   background-color: hsl(120, 60%, 40%);
 }
 
-.btns>.change {
+.btns>.change-color {
   background-color: hsl(40, 50%, 50%);
 }
 
-.btns>.change:hover {
+.btns>.change-color:hover {
   background-color: hsl(40, 60%, 40%);
 }
 
-.gridCol {
-  flex: auto;
-  display: flex;
-  flex-direction: column;
+.btns>.change-size {
+  background-color: hsl(220, 50%, 50%);
 }
 
-.gridRow {
-  flex: auto;
+.btns>.change-size:hover {
+  background-color: hsl(220, 60%, 40%);
 }

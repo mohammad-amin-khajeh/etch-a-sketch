@@ -1,19 +1,22 @@
 // create the grid container
-const grid = document.createElement("div");
-grid.setAttribute("class", "container");
+const board = document.createElement("div");
+board.setAttribute("class", "container");
+document.body.appendChild(board);
 
 // global values
-const gridSize = 16;
+let defaultGridSize = 16;
 const hoverColor = "#7f2";
 const gridColor = "#ddd";
 const resetButton = document.querySelector(".reset");
+const changeSizeButton = document.querySelector(".change-size");
 
 function makeGrid(size, hoverColor) {
-	for (let _ = 0; _ < size; _++) {
+	let container = resetContainer();
+	for (let i = 0; i < size; i++) {
 		const gridCol = document.createElement("div");
 		gridCol.setAttribute("class", "gridCol");
 
-		for (let _ = 0; _ < size; _++) {
+		for (let j = 0; j < size; j++) {
 			const gridRow = document.createElement("div");
 			gridRow.setAttribute("class", "gridRow");
 			gridCol.appendChild(gridRow);
@@ -23,15 +26,40 @@ function makeGrid(size, hoverColor) {
 				() => (gridRow.style.backgroundColor = hoverColor),
 			);
 		}
-
-		grid.appendChild(gridCol);
+		container.appendChild(gridCol);
 	}
-	document.body.appendChild(grid);
+}
+
+function resetBoard() {
+	const pixels = document.querySelectorAll(".gridRow");
+	pixels.forEach((pixel) => (pixel.style.backgroundColor = gridColor));
 }
 
 resetButton.addEventListener("click", () => {
-	const pixels = document.querySelectorAll(".gridRow");
-	pixels.forEach((pixel) => (pixel.style.backgroundColor = gridColor));
+	resetBoard();
 });
 
-makeGrid(gridSize, hoverColor);
+function changeGridSize() {
+	defaultGridSize = prompt("enter the new size(16-100): ", defaultGridSize);
+	if (defaultGridSize > 100 || defaultGridSize < 16) {
+		alert("Please enter a valid number between 16 and 100 inclusive");
+		changeGridSize();
+	}
+}
+
+changeSizeButton.addEventListener("click", () => {
+	changeGridSize();
+	resetBoard();
+	makeGrid(defaultGridSize, hoverColor);
+});
+
+function resetContainer() {
+	const oldContainer = document.querySelector(".container");
+	document.body.removeChild(oldContainer);
+	let newContainer = document.createElement("div");
+	newContainer.setAttribute("class", "container");
+	document.body.appendChild(newContainer);
+	return newContainer;
+}
+
+makeGrid(defaultGridSize, hoverColor);
