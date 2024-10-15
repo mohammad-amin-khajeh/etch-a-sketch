@@ -4,7 +4,7 @@ board.setAttribute("class", "container");
 document.body.appendChild(board);
 
 // global values
-let defaultGridSize = 16;
+let currentGridSize = 16;
 const hoverColor = "#7f2";
 const gridColor = "#ddd";
 const resetButton = document.querySelector(".reset");
@@ -40,8 +40,8 @@ resetButton.addEventListener("click", () => {
 });
 
 function changeGridSize() {
-	defaultGridSize = prompt("enter the new size(16-100): ", defaultGridSize);
-	if (defaultGridSize > 100 || defaultGridSize < 16) {
+	currentGridSize = prompt("enter the new size(16-100): ", currentGridSize);
+	if (currentGridSize > 100 || currentGridSize < 16) {
 		alert("Please enter a valid number between 16 and 100 inclusive");
 		changeGridSize();
 	}
@@ -50,7 +50,7 @@ function changeGridSize() {
 changeSizeButton.addEventListener("click", () => {
 	changeGridSize();
 	resetBoard();
-	makeGrid(defaultGridSize, hoverColor);
+	makeGrid(currentGridSize, hoverColor);
 });
 
 function resetContainer() {
@@ -62,4 +62,4 @@ function resetContainer() {
 	return newContainer;
 }
 
-makeGrid(defaultGridSize, hoverColor);
+makeGrid(currentGridSize, hoverColor);
