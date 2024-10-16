@@ -5,9 +5,10 @@ document.body.appendChild(board);
 
 // global values
 let currentGridSize = 16;
-const opacitySteps = 2;
+let opacitySteps = 2;
 const resetButton = document.querySelector(".reset");
 const changeSizeButton = document.querySelector(".change-size");
+const changeOpacityStepButton = document.querySelector(".change-opacity-step");
 
 makeGrid(currentGridSize);
 
@@ -72,3 +73,16 @@ function randomRgbColor() {
 	const b = Math.floor(Math.random() * 255);
 	return `rgb(${r},${g},${b})`;
 }
+
+function changeOpacityStep() {
+	opacitySteps = prompt(
+		"how much should the opacity increase on each hover? (10-100): ",
+		opacitySteps * 10,
+	);
+	if (opacitySteps < 10 || opacitySteps > 100) {
+		alert("Please enter a number between 10 and 100 inclusive.");
+		changeOpacityStep();
+	} else opacitySteps /= 10;
+}
+
+changeOpacityStepButton.addEventListener("click", () => changeOpacityStep());

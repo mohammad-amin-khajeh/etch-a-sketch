@@ -64,3 +64,11 @@ body {
 .btns>.change-size:hover {
   background-color: hsl(220, 60%, 40%);
 }
+
+.btns>.change-opacity-step {
+  background-color: hsl(180, 50%, 50%);
+}
+
+.btns>.change-opacity-step:hover {
+  background-color: hsl(180, 60%, 40%);
+}
