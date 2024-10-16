@@ -7,12 +7,11 @@ document.body.appendChild(board);
 let currentGridSize = 16;
 const opacitySteps = 2;
 const hoverColor = "#7f2";
-const gridColor = "#ddd";
 const resetButton = document.querySelector(".reset");
 const changeSizeButton = document.querySelector(".change-size");
 
 function makeGrid(size, hoverColor) {
-	let container = resetContainer();
+	const container = resetContainer();
 	for (let i = 0; i < size; i++) {
 		const gridCol = document.createElement("div");
 		gridCol.setAttribute("class", "gridCol");
@@ -60,7 +59,7 @@ changeSizeButton.addEventListener("click", () => {
 function resetContainer() {
 	const oldContainer = document.querySelector(".container");
 	document.body.removeChild(oldContainer);
-	let newContainer = document.createElement("div");
+	const newContainer = document.createElement("div");
 	newContainer.setAttribute("class", "container");
 	document.body.appendChild(newContainer);
 	return newContainer;
