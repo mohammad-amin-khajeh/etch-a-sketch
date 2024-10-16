@@ -9,6 +9,8 @@ const opacitySteps = 2;
 const resetButton = document.querySelector(".reset");
 const changeSizeButton = document.querySelector(".change-size");
 
+makeGrid(currentGridSize);
+
 function makeGrid(size) {
 	const container = resetContainer();
 	for (let i = 0; i < size; i++) {
@@ -63,8 +65,6 @@ function resetContainer() {
 	document.body.appendChild(newContainer);
 	return newContainer;
 }
-
-makeGrid(currentGridSize);
 
 function randomRgbColor() {
 	const r = Math.floor(Math.random() * 255);
