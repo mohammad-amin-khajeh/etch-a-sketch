@@ -5,6 +5,7 @@ document.body.appendChild(board);
 
 // global values
 let currentGridSize = 16;
+const opacitySteps = 2;
 const hoverColor = "#7f2";
 const gridColor = "#ddd";
 const resetButton = document.querySelector(".reset");
@@ -19,12 +20,15 @@ function makeGrid(size, hoverColor) {
 		for (let j = 0; j < size; j++) {
 			const gridRow = document.createElement("div");
 			gridRow.setAttribute("class", "gridRow");
+			gridRow.style.opacity = 0;
+			gridRow.style.backgroundColor = hoverColor;
 			gridCol.appendChild(gridRow);
 
-			gridRow.addEventListener(
-				"mouseenter",
-				() => (gridRow.style.backgroundColor = hoverColor),
-			);
+			gridRow.addEventListener("mouseenter", () => {
+				if (gridRow.style.opacity < 1)
+					return (gridRow.style.opacity =
+						+gridRow.style.opacity + 0.1 * opacitySteps);
+			});
 		}
 		container.appendChild(gridCol);
 	}
@@ -32,7 +36,7 @@ function makeGrid(size, hoverColor) {
 
 function resetBoard() {
 	const pixels = document.querySelectorAll(".gridRow");
-	pixels.forEach((pixel) => (pixel.style.backgroundColor = gridColor));
+	pixels.forEach((pixel) => (pixel.style.opacity = 0));
 }
 
 resetButton.addEventListener("click", () => {
