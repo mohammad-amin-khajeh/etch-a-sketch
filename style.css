@@ -11,6 +11,7 @@ body {
   margin: 0 auto;
   flex-wrap: wrap;
   background-color: #ddd;
+  box-shadow: 0px 0px 1rem 8px pink;
 }
 
 .gridCol {
